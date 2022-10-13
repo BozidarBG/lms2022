@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin(){
+        $admin=Admin::where('user_id', $this->id)->where('role', 1)->first();
+        info($admin);
+        info($this->id);
+        return $admin;
+    }
 }
